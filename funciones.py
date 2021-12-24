@@ -33,7 +33,20 @@ def suma(A, B):
     print(res)
     return res
 
-# def resta(A, B):
+def resta(A, B):
+    res = []
+    if len(A) == len(B):
+        if len(A[0]) == len(B[0]):
+            c = len(A)
+            f = len(A[0])
+            for j in range(c):
+                for i in range(f):
+                    if i == 0:
+                        res.append([A[j][i] - B[j][i]])
+                    else:
+                        res[j].append(A[j][i] - B[j][i])
+    print(res)
+    return res
 # def transpuesta(A):
 # def inversa(A):
 # def valores_ppios(A):
