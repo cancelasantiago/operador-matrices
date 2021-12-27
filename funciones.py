@@ -16,6 +16,12 @@ def inicializar_matriz():
     print(A)
     return A
 
+"""def print_mtx(A):
+    c = len(A)
+    f = len(A[0])
+    for j in range(c):
+        for i in range(f):"""
+
 # def matriz_vacia(A):
 # def producto(A, B):
 def suma(A, B):
@@ -47,7 +53,19 @@ def resta(A, B):
                         res[j].append(A[j][i] - B[j][i])
     print(res)
     return res
-# def transpuesta(A):
+
+def transpuesta(A):
+    res = []
+    n = len(A[0])
+    m = len(A)
+    for i in range(n):
+        for j in range(m):
+            val = A[j][i]
+            if j == 0:
+                res.append([val])
+            else:
+                res[i].append(val)
+    print(res)
 # def inversa(A):
 # def valores_ppios(A):
 # def vectores_ppios(A):
