@@ -16,14 +16,48 @@ def inicializar_matriz():
     print(A)
     return A
 
+def inicializar_matriz_nula(n, m):
+    A = []
+    for i in range(n):
+        for j in range(m):
+            if i == 0:
+                A.append([0])
+            else:
+                A[j].append(0)
+    #print(A)
+    return A
+
+
 """def print_mtx(A):
     c = len(A)
     f = len(A[0])
     for j in range(c):
         for i in range(f):"""
 
-# def matriz_vacia(A):
-# def producto(A, B):
+def matriz_vacia(A):
+    if A == []:
+        return True
+    else:
+        return False
+        
+def producto(A, B):
+    ca = len(A)
+    fa = len(A[0])
+    cb = len(B)
+    fb = len(B[0])
+    if ca == fb:
+        res = inicializar_matriz_nula(fa, cb)
+        for j in range(fa):
+            for k in range(cb):
+                sum = 0
+                for i in range(ca):
+                    sum = (A[i][j]*B[k][i]) + sum
+                res[k][j] = sum
+    else:
+        print("Dimensiones incorrectas.")
+    print(res)
+    return res
+
 def suma(A, B):
     res = []
     if len(A) == len(B):
@@ -65,7 +99,11 @@ def transpuesta(A):
                 res.append([val])
             else:
                 res[i].append(val)
-    print(res)
+    #print(res)
+    return res
 # def inversa(A):
+# def determinante(A):
+# def diagonal(A):
+# def LU(A):
 # def valores_ppios(A):
 # def vectores_ppios(A):

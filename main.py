@@ -1,5 +1,6 @@
 import funciones
 
 A = funciones.inicializar_matriz()
+B = funciones.inicializar_matriz()
 
-funciones.transpuesta(A)
+funciones.producto(A, B)
