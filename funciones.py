@@ -1,10 +1,6 @@
 import array as ar
 
-def inicializar_matriz():
-    n = int(input('Ingresar la cantidad de filas: '))
-    m = int(input('Ingresar la cantidad de columnas: '))
-
-
+def create_mtx(n, m):
     A = []
     for i in range(n):
         for j in range(m):
@@ -13,10 +9,9 @@ def inicializar_matriz():
                 A.append([val])
             else:
                 A[j].append(val)
-    print(A)
     return A
 
-def inicializar_matriz_nula(n, m):
+def null_mtx(n, m):
     A = []
     for i in range(n):
         for j in range(m):
@@ -24,23 +19,40 @@ def inicializar_matriz_nula(n, m):
                 A.append([0])
             else:
                 A[j].append(0)
-    #print(A)
     return A
 
+def id_mtx(n, m):
+    m = n
+    A = []
+    for i in range(n):
+        for j in range(m):
+            if i == 0:
+                if i == j:
+                    A.append([1])
+                else:
+                    A.append([0])
+            else:
+                if i == j:
+                    A[j].append(1)
+                else:
+                    A[j].append(0)
+    return A
 
-"""def print_mtx(A):
-    c = len(A)
-    f = len(A[0])
-    for j in range(c):
-        for i in range(f):"""
+def print_mtx(A):
+    for j in range(0, len(A)):
+        for i in range(0, len(A[0])):
+            print(A[j][i], end='')
+            if (i < len(A[0]) -1):
+                print("    ", end='')
+        print()
 
-def matriz_vacia(A):
+def is_empty(A):
     if A == []:
         return True
     else:
         return False
         
-def producto(A, B):
+def prod(A, B):
     ca = len(A)
     fa = len(A[0])
     cb = len(B)
@@ -55,10 +67,9 @@ def producto(A, B):
                 res[k][j] = sum
     else:
         print("Dimensiones incorrectas.")
-    print(res)
     return res
 
-def suma(A, B):
+def add(A, B):
     res = []
     if len(A) == len(B):
         if len(A[0]) == len(B[0]):
@@ -70,10 +81,11 @@ def suma(A, B):
                         res.append([A[j][i] + B[j][i]])
                     else:
                         res[j].append(A[j][i] + B[j][i])
-    print(res)
+    else:
+        print("Dimensiones incorrectas.")
     return res
 
-def resta(A, B):
+def sub(A, B):
     res = []
     if len(A) == len(B):
         if len(A[0]) == len(B[0]):
@@ -85,10 +97,11 @@ def resta(A, B):
                         res.append([A[j][i] - B[j][i]])
                     else:
                         res[j].append(A[j][i] - B[j][i])
-    print(res)
+    else:
+        print("Dimensiones incorrectas.")
     return res
 
-def transpuesta(A):
+def traspose(A):
     res = []
     n = len(A[0])
     m = len(A)
@@ -99,9 +112,8 @@ def transpuesta(A):
                 res.append([val])
             else:
                 res[i].append(val)
-    #print(res)
     return res
-# def inversa(A):
+# def inverse(A):
 # def determinante(A):
 # def diagonal(A):
 # def LU(A):

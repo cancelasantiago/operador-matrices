@@ -1,6 +1,7 @@
 import funciones
 
-A = funciones.inicializar_matriz()
-B = funciones.inicializar_matriz()
+# A = funciones.inicializar_matriz()
+# B = funciones.inicializar_matriz()
+ID = funciones.id_mtx(4,4)
 
-funciones.producto(A, B)
+funciones.print_mtx(ID)
