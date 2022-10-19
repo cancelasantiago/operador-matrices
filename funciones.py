@@ -58,7 +58,7 @@ def prod(A, B):
     cb = len(B)
     fb = len(B[0])
     if ca == fb:
-        res = inicializar_matriz_nula(fa, cb)
+        res = null_mtx(fa, cb)
         for j in range(fa):
             for k in range(cb):
                 sum = 0
