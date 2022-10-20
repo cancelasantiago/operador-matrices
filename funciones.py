@@ -11,6 +11,12 @@ class Rational(object):
         
         if denominator == 0:
             raise Exception("El denominador no puede ser 0")
+        elif (numerator < 0 and denominator < 0):
+            self.numerator = abs(numerator)
+            self.denominator = abs(denominator)
+        elif (numerator < 0 or denominator < 0):
+            self.numerator = - abs(numerator)
+            self.denominator = abs(denominator)
         else:
             self.numerator = numerator
             self.denominator = denominator
@@ -43,43 +49,36 @@ def from_str_to_rational(s):
 
 #Suma racionales
 def add_rational(a, b):
-    numeratorA = a.getNumerator()
-    denominatorA = a.getDenominator()
-    numeratorB = b.getNumerator()
-    denominatorB = b.getDenominator()
+    numeratorA = a.get_numerator()
+    denominatorA = a.get_denominator()
+    numeratorB = b.get_numerator()
+    denominatorB = b.get_denominator()
     if (denominatorB == denominatorA):
-        numeratorR = numeratorA+numeratorB
+        numeratorR = (numeratorA+numeratorB)
         denominatorR = denominatorA
     else:
-        k = gcd(denominatorA,denominatorB)
-        numeratorR = k*(numeratorA+numeratorB)
-        denominatorR = k*denominatorA
+        numeratorR = denominatorB*numeratorA + denominatorA*numeratorB
+        denominatorR = denominatorB*denominatorA
     res = Rational(numeratorR,denominatorR)
-    return (0)
+    return res
 
 #Resta racionales
 def sub_rational(a, b):
-    numeratorA = int(a.getNumerator())
-    denominatorA = int(a.getDenominator())
-    numeratorB = int(b.getNumerator())
-    denominatorB = int(b.getDenominator())
-    return (0)
+    minus_b = Rational(-b.get_numerator(), b.get_denominator())
+    return add_rational(a, minus_b)
 
 #Multiplicacion racionales
 def mult_rational(a, b):
-    numeratorA = int(a.getNumerator())
-    denominatorA = int(a.getDenominator())
-    numeratorB = int(b.getNumerator())
-    denominatorB = int(b.getDenominator())
-    return (0)
+    numeratorA = a.get_numerator()
+    denominatorA = a.get_denominator()
+    numeratorB = b.get_numerator()
+    denominatorB = b.get_denominator()
+    return Rational(numeratorA*numeratorB, denominatorA*denominatorB)
 
 #Division racionales
 def div_rational(a, b):
-    numeratorA = int(a.getNumerator())
-    denominatorA = int(a.getDenominator())
-    numeratorB = int(b.getNumerator())
-    denominatorB = int(b.getDenominator())
-    return (0)
+    inv_b = Rational(b.get_denominator(), b.get_numerator())
+    return mult_rational(a, inv_b)
 
 #Algoritmos simples
 #-----------------------------------------------------------------------------------------------------
@@ -239,7 +238,7 @@ def inverse(A):
             print("La matriz no es cuadrada")
     else:
         print("La matriz es vacia")
-    return A
+    return I
 #-----------------------------------------------------------------------------------------------------
 # def canonical(A) 
 # def mtx_asociada(A, T):
